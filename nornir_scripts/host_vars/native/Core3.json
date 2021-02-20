@@ -1,0 +1,411 @@
+{
+    "native": {
+        "_operation": "replace",
+        "version": "16.11",
+        "boot-start-marker": null,
+        "boot-end-marker": null,
+        "memory": {
+            "free": {
+                "low-watermark": {
+                    "processor": "80526"
+                }
+            }
+        },
+        "call-home": {
+            "contact-email-addr": {
+                "#text": "sch-smart-licensing@cisco.com",
+                "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-call-home"
+            },
+            "profile": {
+                "profile-name": "CiscoTAC-1",
+                "active": "true",
+                "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-call-home"
+            }
+        },
+        "service": {
+            "password-encryption": null,
+            "timestamps": {
+                "debug": {
+                    "datetime": {
+                        "msec": null
+                    }
+                },
+                "log": {
+                    "datetime": {
+                        "msec": null
+                    }
+                }
+            },
+            "call-home": null
+        },
+        "platform": {
+            "console": {
+                "output": "serial",
+                "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-platform"
+            }
+        },
+        "hostname": "Core3",
+        "enable": {
+            "secret": {
+                "type": "9",
+                "secret": "$9$5spXfpjbtskouk$FtW8jyp8aujkcRLZPmtsDfOoL57Qhn3FIxYt0E6HBjM"
+            }
+        },
+        "username": {
+            "name": "kamil",
+            "privilege": "15",
+            "secret": {
+                "encryption": "9",
+                "secret": "$9$Lf3TGQMrUUPfak$mr.sNmMzcU9mKJxOK/noHvvb7I0vXh1WCmnexW5Ay9E"
+            }
+        },
+        "ip": {
+            "vrf": {
+                "name": "MGMT",
+                "description": "OOB Management"
+            },
+            "domain": {
+                "name": "cisco.com"
+            },
+            "forward-protocol": {
+                "protocol": "nd"
+            },
+            "ssh": {
+                "version": "2"
+            },
+            "tftp": {
+                "source-interface": {
+                    "GigabitEthernet": "1"
+                }
+            },
+            "access-list": {
+                "extended": {
+                    "name": "meraki-fqdn-dns",
+                    "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-acl"
+                }
+            },
+            "http": {
+                "authentication": {
+                    "local": null
+                },
+                "server": "true",
+                "secure-server": "true",
+                "client": {
+                    "source-interface": "GigabitEthernet1"
+                },
+                "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-http"
+            }
+        },
+        "interface": {
+            "GigabitEthernet": [
+                {
+                    "name": "1",
+                    "description": "OOB Management",
+                    "ip": {
+                        "vrf": {
+                            "forwarding": {
+                                "word": "MGMT"
+                            }
+                        },
+                        "address": {
+                            "primary": {
+                                "address": "192.168.78.23",
+                                "mask": "255.255.255.0"
+                            }
+                        }
+                    },
+                    "mop": {
+                        "enabled": "false",
+                        "sysid": "false"
+                    },
+                    "negotiation": {
+                        "auto": "true",
+                        "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet"
+                    }
+                },
+                {
+                    "name": "2",
+                    "description": "Link Core3-to-Core1",
+                    "ip": {
+                        "unnumbered": "Loopback0",
+                        "ospf": {
+                            "network": "point-to-point",
+                            "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-ospf"
+                        }
+                    },
+                    "mop": {
+                        "enabled": "false",
+                        "sysid": "false"
+                    },
+                    "negotiation": {
+                        "auto": "true",
+                        "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet"
+                    }
+                },
+                {
+                    "name": "3",
+                    "description": "Link Core3-to-Core4",
+                    "ip": {
+                        "unnumbered": "Loopback0",
+                        "ospf": {
+                            "network": "point-to-point",
+                            "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-ospf"
+                        }
+                    },
+                    "mop": {
+                        "enabled": "false",
+                        "sysid": "false"
+                    },
+                    "negotiation": {
+                        "auto": "true",
+                        "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet"
+                    }
+                },
+                {
+                    "name": "4",
+                    "shutdown": null,
+                    "mop": {
+                        "enabled": "false",
+                        "sysid": "false"
+                    },
+                    "negotiation": {
+                        "auto": "true",
+                        "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet"
+                    }
+                },
+                {
+                    "name": "5",
+                    "shutdown": null,
+                    "mop": {
+                        "enabled": "false",
+                        "sysid": "false"
+                    },
+                    "negotiation": {
+                        "auto": "true",
+                        "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet"
+                    }
+                }
+            ],
+            "Loopback": [
+                {
+                    "name": "0",
+                    "description": "Core3-id",
+                    "ip": {
+                        "address": {
+                            "primary": {
+                                "address": "1.1.1.3",
+                                "mask": "255.255.255.255"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "30",
+                    "description": "BGP Advertised Loopback",
+                    "ip": {
+                        "address": {
+                            "primary": {
+                                "address": "30.30.30.1",
+                                "mask": "255.255.255.0"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "control-plane": null,
+        "login": {
+            "on-success": {
+                "log": null
+            }
+        },
+        "multilink": {
+            "bundle-name": {
+                "#text": "authenticated",
+                "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-ppp"
+            }
+        },
+        "redundancy": null,
+        "spanning-tree": {
+            "extend": {
+                "system-id": null,
+                "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-spanning-tree"
+            }
+        },
+        "subscriber": {
+            "templating": null
+        },
+        "crypto": {
+            "pki": {
+                "certificate": {
+                    "chain": [
+                        {
+                            "name": "SLA-TrustPoint",
+                            "certificate": {
+                                "serial": "01",
+                                "certtype": "ca"
+                            }
+                        },
+                        {
+                            "name": "TP-self-signed-3899247252",
+                            "certificate": {
+                                "serial": "01",
+                                "certtype": "self-signed"
+                            }
+                        }
+                    ]
+                },
+                "trustpoint": [
+                    {
+                        "id": "SLA-TrustPoint",
+                        "enrollment": {
+                            "pkcs12": null
+                        },
+                        "revocation-check": "crl"
+                    },
+                    {
+                        "id": "TP-self-signed-3899247252",
+                        "enrollment": {
+                            "selfsigned": null
+                        },
+                        "revocation-check": "none",
+                        "subject-name": "cn=IOS-Self-Signed-Certificate-3899247252"
+                    }
+                ],
+                "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-crypto"
+            }
+        },
+        "router": {
+            "bgp": {
+                "id": "65001",
+                "bgp": {
+                    "log-neighbor-changes": "true",
+                    "router-id": {
+                        "ip-id": "1.1.1.3"
+                    }
+                },
+                "neighbor": [
+                    {
+                        "id": "1.1.1.1",
+                        "remote-as": "65001",
+                        "update-source": {
+                            "Loopback": "0"
+                        }
+                    },
+                    {
+                        "id": "1.1.1.2",
+                        "remote-as": "65001",
+                        "update-source": {
+                            "Loopback": "0"
+                        }
+                    },
+                    {
+                        "id": "1.1.1.4",
+                        "remote-as": "65001",
+                        "update-source": {
+                            "Loopback": "0"
+                        }
+                    }
+                ],
+                "address-family": {
+                    "no-vrf": {
+                        "ipv4": [
+                            {
+                                "af-name": "unicast",
+                                "ipv4-unicast": {
+                                    "neighbor": [
+                                        {
+                                            "id": "1.1.1.1",
+                                            "activate": null
+                                        },
+                                        {
+                                            "id": "1.1.1.2",
+                                            "activate": null
+                                        },
+                                        {
+                                            "id": "1.1.1.4",
+                                            "activate": null
+                                        }
+                                    ],
+                                    "network": {
+                                        "with-mask": {
+                                            "number": "30.30.30.0",
+                                            "mask": "255.255.255.0"
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "af-name": "multicast"
+                            }
+                        ]
+                    }
+                },
+                "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-bgp"
+            },
+            "ospf": {
+                "id": "1",
+                "router-id": "1.1.1.3",
+                "network": {
+                    "ip": "1.1.1.3",
+                    "mask": "0.0.0.0",
+                    "area": "0"
+                },
+                "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-ospf"
+            }
+        },
+        "license": {
+            "udi": {
+                "pid": "CSR1000V",
+                "sn": "9UBHHXS9TYS"
+            }
+        },
+        "line": {
+            "console": {
+                "first": "0",
+                "stopbits": "1"
+            },
+            "vty": [
+                {
+                    "first": "0",
+                    "last": "4",
+                    "login": {
+                        "local": null
+                    },
+                    "transport": {
+                        "input": {
+                            "input": "ssh"
+                        }
+                    }
+                },
+                {
+                    "first": "5",
+                    "last": "15",
+                    "login": {
+                        "local": null
+                    },
+                    "transport": {
+                        "input": {
+                            "input": "ssh"
+                        }
+                    }
+                }
+            ]
+        },
+        "ntp": {
+            "server": {
+                "server-list": {
+                    "ip-address": "192.168.78.148"
+                },
+                "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-ntp"
+            }
+        },
+        "diagnostic": {
+            "bootup": {
+                "level": "minimal"
+            },
+            "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-diagnostics"
+        },
+        "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-native"
+    }
+}

@@ -1,0 +1,13 @@
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="102">
+  <data>
+    <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+      <ntp>
+        <server xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ntp">
+          <server-list>
+            <ip-address>192.168.78.148</ip-address>
+          </server-list>
+        </server>
+      </ntp>
+    </native>
+  </data>
+</rpc-reply>

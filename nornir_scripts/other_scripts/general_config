@@ -1,0 +1,5 @@
+no ip domain-lookup
+service password-encryption
+banner motd % NO UNAUTHORIZED ACCESS %
+
+

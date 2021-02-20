@@ -1,0 +1,8 @@
+native:
+  ntp:
+    _operation: replace
+    server:
+      server-list:
+        ip-address: 192.168.78.148
+      _xmlns: http://cisco.com/ns/yang/Cisco-IOS-XE-ntp
+  _xmlns: http://cisco.com/ns/yang/Cisco-IOS-XE-native

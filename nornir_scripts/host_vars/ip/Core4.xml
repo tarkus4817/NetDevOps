@@ -1,0 +1,41 @@
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="106">
+  <data>
+    <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+      <ip>
+        <vrf>
+          <name>MGMT</name>
+          <description>OOB Management</description>
+        </vrf>
+        <domain>
+          <name>cisco.com</name>
+        </domain>
+        <forward-protocol>
+          <protocol>nd</protocol>
+        </forward-protocol>
+        <ssh>
+          <version>2</version>
+        </ssh>
+        <tftp>
+          <source-interface>
+            <GigabitEthernet>1</GigabitEthernet>
+          </source-interface>
+        </tftp>
+        <access-list>
+          <extended xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-acl">
+            <name>meraki-fqdn-dns</name>
+          </extended>
+        </access-list>
+        <http xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-http">
+          <authentication>
+            <local/>
+          </authentication>
+          <server>true</server>
+          <secure-server>true</secure-server>
+          <client>
+            <source-interface>GigabitEthernet1</source-interface>
+          </client>
+        </http>
+      </ip>
+    </native>
+  </data>
+</rpc-reply>

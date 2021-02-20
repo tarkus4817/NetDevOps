@@ -1,0 +1,36 @@
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="107">
+  <data>
+    <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+      <line>
+        <console>
+          <first>0</first>
+          <stopbits>1</stopbits>
+        </console>
+        <vty>
+          <first>0</first>
+          <last>4</last>
+          <login>
+            <local/>
+          </login>
+          <transport>
+            <input>
+              <input>ssh</input>
+            </input>
+          </transport>
+        </vty>
+        <vty>
+          <first>5</first>
+          <last>15</last>
+          <login>
+            <local/>
+          </login>
+          <transport>
+            <input>
+              <input>ssh</input>
+            </input>
+          </transport>
+        </vty>
+      </line>
+    </native>
+  </data>
+</rpc-reply>

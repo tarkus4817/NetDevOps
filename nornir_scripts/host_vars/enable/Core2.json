@@ -1,0 +1,12 @@
+{
+    "native": {
+        "enable": {
+            "_operation": "replace",
+            "secret": {
+                "type": "9",
+                "secret": "$9$5spXfpjbtskouk$FtW8jyp8aujkcRLZPmtsDfOoL57Qhn3FIxYt0E6HBjM"
+            }
+        },
+        "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-native"
+    }
+}

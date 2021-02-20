@@ -1,0 +1,112 @@
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="103">
+  <data>
+    <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+      <interface>
+        <GigabitEthernet>
+          <name>1</name>
+          <description>OOB Management</description>
+          <ip>
+            <vrf>
+              <forwarding>
+                <word>MGMT</word>
+              </forwarding>
+            </vrf>
+            <address>
+              <primary>
+                <address>192.168.78.23</address>
+                <mask>255.255.255.0</mask>
+              </primary>
+            </address>
+          </ip>
+          <mop>
+            <enabled>false</enabled>
+            <sysid>false</sysid>
+          </mop>
+          <negotiation xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet">
+            <auto>true</auto>
+          </negotiation>
+        </GigabitEthernet>
+        <GigabitEthernet>
+          <name>2</name>
+          <description>Link Core3-to-Core1</description>
+          <ip>
+            <unnumbered>Loopback0</unnumbered>
+            <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
+              <network>point-to-point</network>
+            </ospf>
+          </ip>
+          <mop>
+            <enabled>false</enabled>
+            <sysid>false</sysid>
+          </mop>
+          <negotiation xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet">
+            <auto>true</auto>
+          </negotiation>
+        </GigabitEthernet>
+        <GigabitEthernet>
+          <name>3</name>
+          <description>Link Core3-to-Core4</description>
+          <ip>
+            <unnumbered>Loopback0</unnumbered>
+            <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
+              <network>point-to-point</network>
+            </ospf>
+          </ip>
+          <mop>
+            <enabled>false</enabled>
+            <sysid>false</sysid>
+          </mop>
+          <negotiation xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet">
+            <auto>true</auto>
+          </negotiation>
+        </GigabitEthernet>
+        <GigabitEthernet>
+          <name>4</name>
+          <shutdown/>
+          <mop>
+            <enabled>false</enabled>
+            <sysid>false</sysid>
+          </mop>
+          <negotiation xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet">
+            <auto>true</auto>
+          </negotiation>
+        </GigabitEthernet>
+        <GigabitEthernet>
+          <name>5</name>
+          <shutdown/>
+          <mop>
+            <enabled>false</enabled>
+            <sysid>false</sysid>
+          </mop>
+          <negotiation xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet">
+            <auto>true</auto>
+          </negotiation>
+        </GigabitEthernet>
+        <Loopback>
+          <name>0</name>
+          <description>Core3-id</description>
+          <ip>
+            <address>
+              <primary>
+                <address>1.1.1.3</address>
+                <mask>255.255.255.255</mask>
+              </primary>
+            </address>
+          </ip>
+        </Loopback>
+        <Loopback>
+          <name>30</name>
+          <description>BGP Advertised Loopback</description>
+          <ip>
+            <address>
+              <primary>
+                <address>30.30.30.1</address>
+                <mask>255.255.255.0</mask>
+              </primary>
+            </address>
+          </ip>
+        </Loopback>
+      </interface>
+    </native>
+  </data>
+</rpc-reply>

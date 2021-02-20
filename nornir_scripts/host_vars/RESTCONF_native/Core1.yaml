@@ -1,0 +1,324 @@
+Cisco-IOS-XE-native:native:
+  version: '16.11'
+  boot-start-marker:
+  - null
+  boot-end-marker:
+  - null
+  memory:
+    free:
+      low-watermark:
+        processor: 80526
+  call-home:
+    Cisco-IOS-XE-call-home:contact-email-addr: sch-smart-licensing@cisco.com
+    Cisco-IOS-XE-call-home:profile:
+    - profile-name: CiscoTAC-1
+      active: true
+  service:
+    password-encryption:
+    - null
+    timestamps:
+      debug:
+        datetime:
+          msec: {}
+      log:
+        datetime:
+          msec:
+          - null
+    call-home:
+    - null
+  platform:
+    Cisco-IOS-XE-platform:console:
+      output: serial
+  hostname: Core1
+  enable:
+    secret:
+      type: '9'
+      secret: $9$5spXfpjbtskouk$FtW8jyp8aujkcRLZPmtsDfOoL57Qhn3FIxYt0E6HBjM
+  username:
+  - name: kamil
+    privilege: 15
+    secret:
+      encryption: '9'
+      secret: $9$GqO8ymcAt2PY3k$tlpfkos9/dTplw9iNo.A6X9GNTTdWym6Y/aULwzgtrQ
+  ip:
+    vrf:
+    - name: MGMT
+      description: OOB Management
+    domain:
+      name: ' cisco.com'
+    forward-protocol:
+      protocol: nd
+    route:
+      ip-route-interface-forwarding-list:
+      - prefix: 172.168.200.0
+        mask: 255.255.255.0
+        fwd-list:
+        - fwd: 1.1.1.2
+    ssh:
+      version: 2
+    tftp:
+      source-interface:
+        GigabitEthernet: '1'
+    access-list:
+      Cisco-IOS-XE-acl:extended:
+      - name: meraki-fqdn-dns
+      - name: 111
+        access-list-seq-rule:
+        - sequence: '10'
+          ace-rule:
+            action: permit
+            protocol: ip
+            ipv4-address: 172.168.100.0
+            mask: 0.0.0.255
+            dest-ipv4-address: 172.168.200.0
+            dest-mask: 0.0.0.255
+    Cisco-IOS-XE-http:http:
+      authentication:
+        local:
+        - null
+      server: true
+      secure-server: true
+      client:
+        source-interface: ' GigabitEthernet1'
+  interface:
+    GigabitEthernet:
+    - name: '1'
+      description: OOB Management
+      ip:
+        vrf:
+          forwarding:
+            word: MGMT
+        address:
+          primary:
+            address: 192.168.78.21
+            mask: 255.255.255.0
+      mop:
+        enabled: false
+        sysid: false
+      Cisco-IOS-XE-ethernet:negotiation:
+        auto: true
+    - name: '2'
+      description: Link Core1-to-Core3
+      ip:
+        access-group:
+          in:
+            acl:
+              acl-name: 150
+              in:
+              - null
+        unnumbered: Loopback0
+        Cisco-IOS-XE-ospf:ospf:
+          network: point-to-point
+      mop:
+        enabled: false
+        sysid: false
+      Cisco-IOS-XE-ethernet:negotiation:
+        auto: true
+    - name: '3'
+      description: Link Core1-to-Core4
+      ip:
+        unnumbered: Loopback0
+        Cisco-IOS-XE-ospf:ospf:
+          network: point-to-point
+      mop:
+        enabled: false
+        sysid: false
+      Cisco-IOS-XE-ethernet:negotiation:
+        auto: true
+    - name: '4'
+      shutdown:
+      - null
+      mop:
+        enabled: false
+        sysid: false
+      Cisco-IOS-XE-ethernet:negotiation:
+        auto: true
+    - name: '5'
+      shutdown:
+      - null
+      mop:
+        enabled: false
+        sysid: false
+      Cisco-IOS-XE-ethernet:negotiation:
+        auto: true
+    Loopback:
+    - name: 0
+      description: Core1-id
+      ip:
+        address:
+          primary:
+            address: 1.1.1.1
+            mask: 255.255.255.255
+    - name: 10
+      description: BGP Advertised Loopback
+      ip:
+        address:
+          primary:
+            address: 10.10.10.1
+            mask: 255.255.255.0
+    - name: 100
+      description: VPN LAN Core1
+      ip:
+        address:
+          primary:
+            address: 172.168.100.1
+            mask: 255.255.255.0
+  control-plane: {}
+  login:
+    on-success:
+      log: {}
+  multilink:
+    Cisco-IOS-XE-ppp:bundle-name: authenticated
+  redundancy: {}
+  spanning-tree:
+    Cisco-IOS-XE-spanning-tree:extend:
+      system-id:
+      - null
+  subscriber:
+    templating:
+    - null
+  crypto:
+    Cisco-IOS-XE-crypto:ipsec:
+      transform-set:
+      - tag: Core1-Core2
+        esp: esp-aes
+        key-bit: '256'
+        esp-hmac: esp-sha512-hmac
+        mode:
+          tunnel:
+          - null
+    Cisco-IOS-XE-crypto:isakmp:
+      key:
+        key-address:
+          key: cisco
+          addr4-container:
+            address: 1.1.1.2
+      policy:
+      - number: 1
+        authentication: pre-share
+        group: '24'
+        hash: sha512
+        lifetime: 3600
+    Cisco-IOS-XE-crypto:crypto-map:
+      map:
+      - name: Core1-Core2-MAP
+        sequence-number: 1
+        keying: ipsec-isakmp
+        match:
+          address: 111
+        set:
+          peer:
+            address: 1.1.1.2
+          pfs:
+            group: group24
+          transform-set:
+          - Core1-Core2
+    Cisco-IOS-XE-crypto:pki:
+      certificate:
+        chain:
+        - name: SLA-TrustPoint
+          certificate:
+          - serial: '01'
+            certtype: ca
+        - name: TP-self-signed-2106910356
+          certificate:
+          - serial: '01'
+            certtype: self-signed
+      trustpoint:
+      - id: SLA-TrustPoint
+        enrollment:
+          pkcs12:
+          - null
+        revocation-check:
+        - crl
+      - id: TP-self-signed-2106910356
+        enrollment:
+          selfsigned:
+          - null
+        revocation-check:
+        - none
+        subject-name: cn=IOS-Self-Signed-Certificate-2106910356
+  router:
+    Cisco-IOS-XE-bgp:bgp:
+    - id: 65001
+      bgp:
+        log-neighbor-changes: true
+        router-id:
+          ip-id: 1.1.1.1
+      neighbor:
+      - id: 1.1.1.2
+        remote-as: 65001
+        update-source:
+          Loopback: 0
+      - id: 1.1.1.3
+        remote-as: 65001
+        update-source:
+          Loopback: 0
+      - id: 1.1.1.4
+        remote-as: 65001
+        update-source:
+          Loopback: 0
+      address-family:
+        no-vrf:
+          ipv4:
+          - af-name: unicast
+            ipv4-unicast:
+              neighbor:
+              - id: 1.1.1.2
+                activate:
+                - null
+              - id: 1.1.1.3
+                activate:
+                - null
+              - id: 1.1.1.4
+                activate:
+                - null
+              network:
+                with-mask:
+                - number: 10.10.10.0
+                  mask: 255.255.255.0
+          - af-name: multicast
+    Cisco-IOS-XE-ospf:ospf:
+    - id: 1
+      router-id: 1.1.1.1
+      network:
+      - ip: 1.1.1.1
+        mask: 0.0.0.0
+        area: 0
+      - ip: 172.168.100.0
+        mask: 0.0.0.255
+        area: 0
+  license:
+    udi:
+      pid: CSR1000V
+      sn: 98RGF09R9JW
+  line:
+    console:
+    - first: '0'
+      stopbits: '1'
+    vty:
+    - first: 0
+      last: 4
+      login:
+        local:
+        - null
+      transport:
+        input:
+          input:
+          - ssh
+    - first: 5
+      last: 15
+      login:
+        local:
+        - null
+      transport:
+        input:
+          input:
+          - ssh
+  ntp:
+    Cisco-IOS-XE-ntp:server:
+      server-list:
+      - ip-address: 192.168.78.148
+  Cisco-IOS-XE-diagnostics:diagnostic:
+    bootup:
+      level: minimal

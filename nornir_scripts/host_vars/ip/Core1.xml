@@ -1,0 +1,64 @@
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="106">
+  <data>
+    <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+      <ip>
+        <vrf>
+          <name>MGMT</name>
+          <description>OOB Management</description>
+        </vrf>
+        <domain>
+          <name>cisco.com</name>
+        </domain>
+        <forward-protocol>
+          <protocol>nd</protocol>
+        </forward-protocol>
+        <route>
+          <ip-route-interface-forwarding-list>
+            <prefix>172.168.200.0</prefix>
+            <mask>255.255.255.0</mask>
+            <fwd-list>
+              <fwd>1.1.1.2</fwd>
+            </fwd-list>
+          </ip-route-interface-forwarding-list>
+        </route>
+        <ssh>
+          <version>2</version>
+        </ssh>
+        <tftp>
+          <source-interface>
+            <GigabitEthernet>1</GigabitEthernet>
+          </source-interface>
+        </tftp>
+        <access-list>
+          <extended xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-acl">
+            <name>meraki-fqdn-dns</name>
+          </extended>
+          <extended xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-acl">
+            <name>111</name>
+            <access-list-seq-rule>
+              <sequence>10</sequence>
+              <ace-rule>
+                <action>permit</action>
+                <protocol>ip</protocol>
+                <ipv4-address>172.168.100.0</ipv4-address>
+                <mask>0.0.0.255</mask>
+                <dest-ipv4-address>172.168.200.0</dest-ipv4-address>
+                <dest-mask>0.0.0.255</dest-mask>
+              </ace-rule>
+            </access-list-seq-rule>
+          </extended>
+        </access-list>
+        <http xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-http">
+          <authentication>
+            <local/>
+          </authentication>
+          <server>true</server>
+          <secure-server>true</secure-server>
+          <client>
+            <source-interface>GigabitEthernet1</source-interface>
+          </client>
+        </http>
+      </ip>
+    </native>
+  </data>
+</rpc-reply>

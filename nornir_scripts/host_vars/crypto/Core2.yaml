@@ -1,0 +1,62 @@
+native:
+  crypto:
+    _operation: replace
+    ipsec:
+      transform-set:
+        tag: Core2-Core1
+        esp: esp-aes
+        key-bit: '256'
+        esp-hmac: esp-sha512-hmac
+        mode:
+          tunnel: null
+      _xmlns: http://cisco.com/ns/yang/Cisco-IOS-XE-crypto
+    isakmp:
+      key:
+        key-address:
+          key: cisco
+          addr4-container:
+            address: 1.1.1.1
+      policy:
+        number: '1'
+        authentication: pre-share
+        group: '24'
+        hash: sha512
+        lifetime: '3600'
+      _xmlns: http://cisco.com/ns/yang/Cisco-IOS-XE-crypto
+    crypto-map:
+      map:
+        name: Core2-Core1-MAP
+        sequence-number: '1'
+        keying: ipsec-isakmp
+        match:
+          address: '111'
+        set:
+          peer:
+            address: 1.1.1.1
+          pfs:
+            group: group24
+          transform-set: Core2-Core1
+      _xmlns: http://cisco.com/ns/yang/Cisco-IOS-XE-crypto
+    pki:
+      certificate:
+        chain:
+        - name: SLA-TrustPoint
+          certificate:
+            serial: '01'
+            certtype: ca
+        - name: TP-self-signed-3141318562
+          certificate:
+            serial: '01'
+            certtype: self-signed
+      trustpoint:
+      - id: SLA-TrustPoint
+        enrollment:
+          pkcs12: null
+        revocation-check: crl
+      - id: TP-self-signed-3141318562
+        enrollment:
+          selfsigned: null
+        revocation-check: none
+        subject-name: cn=IOS-Self-Signed-Certificate-3141318562
+      _xmlns: http://cisco.com/ns/yang/Cisco-IOS-XE-crypto
+  _xmlns: http://cisco.com/ns/yang/Cisco-IOS-XE-native

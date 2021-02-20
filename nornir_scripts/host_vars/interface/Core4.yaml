@@ -1,0 +1,85 @@
+native:
+  interface:
+    _operation: replace
+    GigabitEthernet:
+    - name: '1'
+      description: OOB Management
+      ip:
+        vrf:
+          forwarding:
+            word: MGMT
+        address:
+          primary:
+            address: 192.168.78.24
+            mask: 255.255.255.0
+      mop:
+        enabled: 'false'
+        sysid: 'false'
+      negotiation:
+        auto: 'true'
+        _xmlns: http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet
+    - name: '2'
+      description: Link Core4-to-Core1
+      ip:
+        unnumbered: Loopback0
+        ospf:
+          network: point-to-point
+          _xmlns: http://cisco.com/ns/yang/Cisco-IOS-XE-ospf
+      mop:
+        enabled: 'false'
+        sysid: 'false'
+      negotiation:
+        auto: 'true'
+        _xmlns: http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet
+    - name: '3'
+      description: Link Core4-to-Core2
+      ip:
+        unnumbered: Loopback0
+        ospf:
+          network: point-to-point
+          _xmlns: http://cisco.com/ns/yang/Cisco-IOS-XE-ospf
+      mop:
+        enabled: 'false'
+        sysid: 'false'
+      negotiation:
+        auto: 'true'
+        _xmlns: http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet
+    - name: '4'
+      shutdown: null
+      mop:
+        enabled: 'false'
+        sysid: 'false'
+      negotiation:
+        auto: 'true'
+        _xmlns: http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet
+    - name: '5'
+      shutdown: null
+      mop:
+        enabled: 'false'
+        sysid: 'false'
+      negotiation:
+        auto: 'true'
+        _xmlns: http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet
+    Loopback:
+    - name: '0'
+      description: Core4-id
+      ip:
+        address:
+          primary:
+            address: 1.1.1.4
+            mask: 255.255.255.255
+    - name: '40'
+      description: BGP Advertised Loopback
+      ip:
+        address:
+          primary:
+            address: 40.40.40.1
+            mask: 255.255.255.0
+    - name: '45'
+      description: Test_link1
+      ip:
+        address:
+          primary:
+            address: 45.45.45.1
+            mask: 255.255.255.0
+  _xmlns: http://cisco.com/ns/yang/Cisco-IOS-XE-native

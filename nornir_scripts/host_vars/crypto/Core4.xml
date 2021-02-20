@@ -1,0 +1,42 @@
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="104">
+  <data>
+    <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+      <crypto>
+        <pki xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-crypto">
+          <certificate>
+            <chain>
+              <name>SLA-TrustPoint</name>
+              <certificate>
+                <serial>01</serial>
+                <certtype>ca</certtype>
+              </certificate>
+            </chain>
+            <chain>
+              <name>TP-self-signed-151682397</name>
+              <certificate>
+                <serial>01</serial>
+                <certtype>self-signed</certtype>
+              </certificate>
+            </chain>
+            <pool/>
+          </certificate>
+          <trustpoint>
+            <id>SLA-TrustPoint</id>
+            <enrollment>
+              <pkcs12/>
+            </enrollment>
+            <revocation-check>crl</revocation-check>
+          </trustpoint>
+          <trustpoint>
+            <id>TP-self-signed-151682397</id>
+            <enrollment>
+              <selfsigned/>
+            </enrollment>
+            <revocation-check>none</revocation-check>
+            <subject-name>cn=IOS-Self-Signed-Certificate-151682397</subject-name>
+          </trustpoint>
+        </pki>
+      </crypto>
+    </native>
+  </data>
+</rpc-reply>

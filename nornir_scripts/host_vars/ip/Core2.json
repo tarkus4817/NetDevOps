@@ -1,0 +1,95 @@
+{
+    "native": {
+        "ip": {
+            "_operation": "replace",
+            "vrf": {
+                "name": "MGMT",
+                "description": "OOB Management"
+            },
+            "domain": {
+                "name": "cisco.com"
+            },
+            "forward-protocol": {
+                "protocol": "nd"
+            },
+            "route": {
+                "ip-route-interface-forwarding-list": {
+                    "prefix": "172.168.100.0",
+                    "mask": "255.255.255.0",
+                    "fwd-list": {
+                        "fwd": "1.1.1.1"
+                    }
+                }
+            },
+            "ssh": {
+                "version": "2"
+            },
+            "tftp": {
+                "source-interface": {
+                    "GigabitEthernet": "1"
+                }
+            },
+            "access-list": {
+                "extended": [
+                    {
+                        "name": "meraki-fqdn-dns",
+                        "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-acl"
+                    },
+                    {
+                        "name": "111",
+                        "access-list-seq-rule": {
+                            "sequence": "10",
+                            "ace-rule": {
+                                "action": "permit",
+                                "protocol": "ip",
+                                "ipv4-address": "172.168.200.0",
+                                "mask": "0.0.0.255",
+                                "dest-ipv4-address": "172.168.100.0",
+                                "dest-mask": "0.0.0.255"
+                            }
+                        },
+                        "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-acl"
+                    },
+                    {
+                        "name": "150",
+                        "access-list-seq-rule": [
+                            {
+                                "sequence": "10",
+                                "ace-rule": {
+                                    "action": "permit",
+                                    "protocol": "ip",
+                                    "ipv4-address": "192.168.100.0",
+                                    "mask": "0.0.0.255",
+                                    "dest-ipv4-address": "192.168.200.0",
+                                    "dest-mask": "0.0.0.255"
+                                }
+                            },
+                            {
+                                "sequence": "20",
+                                "ace-rule": {
+                                    "action": "deny",
+                                    "protocol": "ip",
+                                    "any": null,
+                                    "dst-any": null
+                                }
+                            }
+                        ],
+                        "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-acl"
+                    }
+                ]
+            },
+            "http": {
+                "authentication": {
+                    "local": null
+                },
+                "server": "true",
+                "secure-server": "true",
+                "client": {
+                    "source-interface": "GigabitEthernet1"
+                },
+                "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-http"
+            }
+        },
+        "_xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-native"
+    }
+}

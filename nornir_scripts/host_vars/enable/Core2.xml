@@ -1,0 +1,12 @@
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="105">
+  <data>
+    <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+      <enable>
+        <secret>
+          <type>9</type>
+          <secret>$9$5spXfpjbtskouk$FtW8jyp8aujkcRLZPmtsDfOoL57Qhn3FIxYt0E6HBjM</secret>
+        </secret>
+      </enable>
+    </native>
+  </data>
+</rpc-reply>
